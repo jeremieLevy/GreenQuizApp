@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecueilList: View {
     @State var searchText: String = ""
-    var theme: Theme
+    var theme: ThemeModel
     
     var body: some View {
         NavigationStack{
@@ -59,5 +59,5 @@ struct RecueilList: View {
 }
 
 #Preview {
-    RecueilList(theme: Theme(theme: "Recyclage", tImage: "rr", factLists: recyclages))
+    RecueilList(theme: ThemeModel(theme: "Recyclage", tImage: "rr", factLists: recyclages))
 }

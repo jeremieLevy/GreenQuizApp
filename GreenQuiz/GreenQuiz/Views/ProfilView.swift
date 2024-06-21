@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct profilView: View {
+struct ProfilView: View {
     
     @State var percent: CGFloat = 0
     @Environment(\.presentationMode) var presentationMode
@@ -40,7 +40,7 @@ struct profilView: View {
                                 .font(.system(size : 20, weight: .bold))
                                 .foregroundStyle(.white)
                             //progressionBar(width: 200, height: 20, percent: percent, color1: .red, color2: .blue)
-                            progressionBar(width: 200, height: 20, percent: 50, color1: .red, color2: .blue)
+                            ProgressionBar(width: 200, height: 20, percent: 50, color1: .red, color2: .blue)
                                 .padding(20)
                             
                             Text("50%")
@@ -81,5 +81,5 @@ struct profilView: View {
 
 
 #Preview {
-    profilView()
+    ProfilView()
 }

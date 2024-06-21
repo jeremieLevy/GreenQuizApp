@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct progressionBar: View {
+struct ProgressionBar: View {
     
     var width: CGFloat = 200
     var height: CGFloat = 20
@@ -34,5 +34,5 @@ struct progressionBar: View {
 }
 
 #Preview {
-    progressionBar()
+    ProgressionBar()
 }
