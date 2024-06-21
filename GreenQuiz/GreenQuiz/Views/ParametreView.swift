@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct parametreView: View {
+struct ParametreView: View {
     
     @State private var showGreeting = true
     @State private var showAlert = false
@@ -72,6 +72,6 @@ struct parametreView: View {
 
 struct parametre_Previews: PreviewProvider {
     static var previews: some View {
-        parametreView()
+        ParametreView()
     }
 }

@@ -1,22 +1,11 @@
 //
-//  Models.swift
+//  FactListModel.swift
 //  GreenQuiz
 //
-//  Created by Axel Remy on 20/06/2024.
+//  Created by Jérémie Levy on 21/06/2024.
 //
 
 import Foundation
-
-
-struct Theme: Identifiable {
-    
-    let id = UUID()
-    var theme: String
-    var tImage: String
-    var factLists: [FactList]
-    
-}
-
 
 struct FactList: Identifiable {
     var id = UUID()

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct QuestionView: View {
     @State var question: Question
-    @State var vmAnswers: AnswersViewModel
 
     
     var body: some View {
@@ -19,15 +18,12 @@ struct QuestionView: View {
                 .padding(.top, 100)
             Spacer()
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
-                ForEach(vmAnswers.getAllAnswers()) { answer in
-                    AnswerButtonView(optionLetter: answer.optionLetter, answerOption: answer.answersOptions)
-                        .padding(.bottom, 50)
-                }
+
             }
         }
     }
 }
 
 #Preview {
-    QuestionView(question: Question(title: "Combien de L pour un Jean ?"), vmAnswers: AnswersViewModel())
+    QuestionView(question: Question(title: "Zerma le jean ?"))
 }
