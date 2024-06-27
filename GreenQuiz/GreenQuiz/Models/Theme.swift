@@ -13,10 +13,10 @@ struct ThemeResponse: Decodable {
   // themes
 struct Theme: Decodable, Identifiable {
   let id: String
-  let fields: Fields
+  let fields: ThemeFields
 }
 
-struct Fields: Decodable {
+struct ThemeFields: Decodable {
   let theme: String
 //  let factList: [FactListModel]
 //  let picture: Picture

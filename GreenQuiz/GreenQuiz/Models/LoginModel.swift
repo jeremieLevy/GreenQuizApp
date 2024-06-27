@@ -13,10 +13,10 @@ struct UsersResponse: Codable {
 
 struct User: Identifiable, Codable {
     let id: String
-    let fields: Fields
+    let fields: UserFields
 }
 
-struct Fields: Codable {
+struct UserFields: Codable {
     let password: String
     let email: String
 }
