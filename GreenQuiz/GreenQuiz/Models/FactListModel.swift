@@ -7,17 +7,31 @@
 
 import Foundation
 
-struct FactList: Identifiable {
-    var id = UUID()
+//struct Fields: Decodable {
+//    let theme: String
+//    let factslistmodel: [FactListModel]
+//    let image: [Img]
+//}
+
+struct Img: Decodable {
+    let url: String
+}
+
+struct FactListModel: Decodable {
+//    var id: String
     var theme: String
-    var titre: String
+    var title: String
     var description: String
+    var answer: String
+    var question: String
+    var options: String
     
-    init(id: UUID = UUID(), theme: String, titre: String, description: String) {
-        self.id = id
-        self.theme = theme
-        self.titre = titre
-        self.description = description
-        
-    }
+//    init(theme: String, title: String, description: String, answer: String, question: String, options: String) {
+//        self.theme = theme
+//        self.title = title
+//        self.description = description
+//        self.answer = answer
+//        self.question = question
+//        self.options = options
+//    }
 }
