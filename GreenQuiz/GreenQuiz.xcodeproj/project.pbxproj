@@ -19,6 +19,9 @@
 		808535582C2375770043192E /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808535572C2375770043192E /* AssetsViewModel.swift */; };
 		A72508BB2C2C3207004E0CD3 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72508BA2C2C3207004E0CD3 /* Question.swift */; };
 		A72508BD2C2C3269004E0CD3 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72508BC2C2C3269004E0CD3 /* QuestionViewModel.swift */; };
+
+		AD39BE522C2C587A00056B20 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD39BE512C2C587A00056B20 /* CreateAccountView.swift */; };
+
 		AD7B30752C2306FD007A44DF /* RecueilTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B30742C2306FD007A44DF /* RecueilTheme.swift */; };
 		AD7B30772C230E68007A44DF /* ProfilButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B30762C230E68007A44DF /* ProfilButton.swift */; };
 		AD8C7B4D2C2AB23000A28BCF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8C7B4C2C2AB23000A28BCF /* LoginView.swift */; };
@@ -50,8 +53,12 @@
 		808535532C2371F60043192E /* AssetsLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsLibraryView.swift; sourceTree = "<group>"; };
 		808535552C2375020043192E /* AssetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetItemView.swift; sourceTree = "<group>"; };
 		808535572C2375770043192E /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
+
 		A72508BA2C2C3207004E0CD3 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A72508BC2C2C3269004E0CD3 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
+
+		AD39BE512C2C587A00056B20 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+
 		AD7B30742C2306FD007A44DF /* RecueilTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecueilTheme.swift; sourceTree = "<group>"; };
 		AD7B30762C230E68007A44DF /* ProfilButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilButton.swift; sourceTree = "<group>"; };
 		AD8C7B4C2C2AB23000A28BCF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -101,6 +108,7 @@
 		808535592C2375860043192E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AD39BE512C2C587A00056B20 /* CreateAccountView.swift */,
 				AD8C7B4C2C2AB23000A28BCF /* LoginView.swift */,
 				F268FF1C2C2311A0006C5563 /* ProfilView.swift */,
 				80090F432C24245700F8E241 /* QuestionView.swift */,
@@ -274,6 +282,7 @@
 				A72508BB2C2C3207004E0CD3 /* Question.swift in Sources */,
 				AD8C7B4D2C2AB23000A28BCF /* LoginView.swift in Sources */,
 				AD8C7B512C2AE49800A28BCF /* LoginModel.swift in Sources */,
+				AD39BE522C2C587A00056B20 /* CreateAccountView.swift in Sources */,
 				806F9DA92C236F14008703D8 /* QuizOfTheDayView.swift in Sources */,
 				80090F442C24245700F8E241 /* QuestionView.swift in Sources */,
 				808535542C2371F60043192E /* AssetsLibraryView.swift in Sources */,

@@ -20,15 +20,13 @@ struct LoginView: View {
             await viewModel.fetchUsers()
         }
     }
-    
-    
     var body: some View {
         NavigationStack{
             ZStack {
                 Color.greeny
                     .ignoresSafeArea()
                 VStack{
-                    Image("home")
+                    Image("LogoAccueil")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250)
@@ -43,7 +41,6 @@ struct LoginView: View {
                         .foregroundStyle(.white)
                     
                     TextField("E-mail", text: $email)
-                        .textCase(.lowercase)
                         .padding(5)
                         .background(Color.white.opacity(1))
                         .clipShape(.rect(cornerRadius: 15))
@@ -64,47 +61,50 @@ struct LoginView: View {
                         .padding(.horizontal, 50)
                     
                     Button(action: {
-                        //password
+                        // oublie de password
                     }, label: {
-                        Text("Forgot your password ?")
+                        Text("Mot de passe oublié ?")
                             .foregroundStyle(.white)
                             .font(.footnote)
-                            .padding(2)
+                            .padding(5)
                     })
                     
                     Spacer()
                         .frame(height: 30)
                     
-                    Button(action: {
-                        fetchUsers()
+                        Button(action: {
+                            fetchUsers()
                             if !viewModel.users.isEmpty {
-                                for user in viewModel.users {
-                                    if user.fields.mail.lowercased() == email.lowercased() && user.fields.password == password {
-                                        print("Connexion réussie !")
-                                        return
-                                    }
+                            for user in viewModel.users {
+                                if user.fields.email.lowercased() == email.lowercased() && user.fields.password == password {
+                                    print("connexion ok")
+                                    return
                                 }
-                            }else {
                             }
-
-                            print("Échec de la connexion.")
-                    }, label: {
-                        Text("Se connecter")
-                            .font(.title2)
-                            .foregroundStyle(.white)
-                            .padding()
-                            .background(Color.black.opacity(0.3))
-                            .clipShape(.rect(cornerRadius: 25))
-                        
-                    })
+                        }else {
+                            }
                     
-                    Button(action: {
-                        //creation de compte
-                    }, label: {
+                        print("Échec de la connexion.")
+                            
+                        }, label: {
+                            Text("Se connecter")
+                                .font(.title2)
+                                .foregroundStyle(.white)
+                                .padding()
+                                .background(Color.black.opacity(0.3))
+                                .clipShape(.rect(cornerRadius: 25))
+                            })
+                    
+                    NavigationLink {
+                        CreateAccountView()
+                    } label: {
                         Text("Créer votre compte")
                             .foregroundStyle(.white)
                             .padding()
-                    })
+                    }
+                    
+                    Spacer()
+
                 }
             }
         }

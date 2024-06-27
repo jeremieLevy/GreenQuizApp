@@ -50,6 +50,41 @@ class UserViewModel {
 //                print(error)
             }
         }
+    func createUsers(email: String, password: String) async {
+        
+        let url = URL(string: apiUrl)!
+        
+        let jsonObject: [String: Any] = [
+            "fields": [
+                "email": email,
+                "password": password
+            ]
+        ]
+        
+        do {
+            let userData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            print("serie terminer")
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("Bearer \(apiToken)", forHTTPHeaderField: "Authorization")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = userData
+            
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+              guard let data = data else {
+                print(String(describing: error))
+                return
+              }
+              print(String(data: data, encoding: .utf8)!)
+            }
+
+            task.resume()
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
     
     
 }

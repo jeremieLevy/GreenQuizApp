@@ -18,5 +18,5 @@ struct User: Identifiable, Codable {
 
 struct Fields: Codable {
     let password: String
-    let mail: String
+    let email: String
 }
