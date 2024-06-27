@@ -17,9 +17,9 @@ struct Theme: Decodable, Identifiable {
 }
 
 struct ThemeFields: Decodable {
-  let theme: String
-//  let factList: [FactListModel]
-//  let picture: Picture
+    let theme: String
+    //  let factList: [FactListModel]
+    let picture: [Picture]
 }
 
 struct Picture: Decodable {
