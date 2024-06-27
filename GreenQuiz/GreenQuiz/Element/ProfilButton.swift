@@ -21,7 +21,7 @@ struct ProfilButton: View {
                 .foregroundStyle(.white)
         })
         .sheet(isPresented: $showingSheet, content: {
-//            ProfilView()
+            ProfilView()
         })
     }
 }
