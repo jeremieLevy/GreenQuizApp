@@ -17,7 +17,7 @@ class QuestionViewModel {
   private let apiToken = "pat9xY5WUxKyReVg4.7bf897fef95bfc89b8a44554e3e14bc59611a5ae33690fe19ed4a5533ea57391"
   
   @MainActor
-  func fetchQuestions() async {
+    func fetchQuestions() async {
     
       // Objet URL pour la requête
     let url = URL(string: apiUrl)!

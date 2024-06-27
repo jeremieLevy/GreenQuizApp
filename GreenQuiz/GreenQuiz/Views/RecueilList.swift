@@ -9,7 +9,7 @@
 //
 //struct RecueilList: View {
 //    @State var searchText: String = ""
-//    var theme: ThemeModel
+//    var theme: QuestionView
 //    
 //    var body: some View {
 //        NavigationStack{
