@@ -7,33 +7,43 @@
 
 import SwiftUI
 
-struct AssetsLibraryView: View {
-    @State var vmAssets = AssetsViewModel()
+struct AssetView: View {
+    
+    @State var viewModel = AssetViewModel()
     
     var body: some View {
+        
         ZStack {
-            Rectangle()
-                .ignoresSafeArea()
-                .foregroundStyle(.primaryApp)
-                .opacity(0.2)
-            ScrollView {
-                Spacer()
-                Text("Personnaliser le jardin")
-                    .fontWeight(.bold)
-                Text("Choisissez un objet dans la bibliothèque")
-                    .font(.footnote)
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
-                    ForEach(vmAssets.getAllAssets()) { asset in
-                        AssetItemView(asset: Asset(image: asset.image, name: asset.name))
+            if viewModel.isLoading {
+                ProgressView("Loading...")
+            } else {
+                Rectangle()
+                    .ignoresSafeArea()
+                    .foregroundStyle(.gray)
+                    .opacity(0.2)
+                ScrollView {
+                    Spacer()
+                    Text("Personnaliser le jardin")
+                        .fontWeight(.bold)
+                    Text("Choisissez un objet dans la bibliothèque")
+                        .font(.footnote)
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                        ForEach(viewModel.assets) { asset in
+                            AssetItemView(asset: AssetModel(id: "", fields: AssetFields(name: "", image: [Plant(url: asset.fields.image[0].url)])))
+                        }
                     }
+                    .padding()
+                    .padding(.top)
                 }
-                .padding()
-                .padding(.top)
+            }
+        }.onAppear {
+            Task {
+                await viewModel.fetchAssets()
             }
         }
     }
 }
 
 #Preview {
-    AssetsLibraryView()
+    AssetView()
 }

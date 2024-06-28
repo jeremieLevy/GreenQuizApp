@@ -8,16 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var tabSelection = 1
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            TabView(selection: $tabSelection){
+                
+                ProfilView()
+                    .tag(1)
+                
+                
+                QuizPageView()
+                    .tag(2)
+                
+                
+                ProfilView()
+                    .tag(3)
+                
+            }
+            .overlay(alignment : .bottom){
+                CustomTabView(tabSelection: $tabSelection)
+            }
         }
-        .padding()
     }
-}
+
 
 #Preview {
     ContentView()
