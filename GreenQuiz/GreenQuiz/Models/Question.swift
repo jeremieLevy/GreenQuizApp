@@ -24,4 +24,15 @@ struct QuestionFields: Decodable {
   let annecdote: String
   let title: String
   let theme: [String]
+  
+  func loopThemeId(target: String, themes: [Theme]) -> String {
+    var targetTheme: String
+    for theme in themes {
+      if target == theme.id {
+        targetTheme = theme.fields.theme
+        return targetTheme
+      }
+    }
+    return "Thème non attribué"
+  }
 }

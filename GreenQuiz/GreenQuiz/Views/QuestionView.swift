@@ -41,73 +41,134 @@ import SwiftUI
 struct QuestionView: View {
   
   var backgroundColor = "PrimaryAppColor"
-  @State public var viewModel = QuestionViewModel()
+  @State public var questions_vm = QuestionViewModel()
+  @State public var themes_vm = ThemeViewModel()
   @State var indexQuestions = 0
   @State var options: [String]
+  @State var quizScore = 0
+  @State var isComplete = false
+  @State var themeId = ""
   
-  func convertOptions() {
-    let convertableOptions = viewModel.questions[indexQuestions].fields.options
-    options = convertableOptions.components(separatedBy: ",")
-  }
-  
-  func fetchQuestions() {
+    //  Appel l'API
+  func fetchData() {
     Task{
-      await viewModel.fetchQuestions()
+      await questions_vm.fetchQuestions()
+      sortData()
+      await themes_vm.fetchThemes()
       convertOptions()
     }
   }
   
+  func sortData() -> [Question] {
+    var questionsSort: [Question] = []
+    for question in questions_vm.questions {
+      if question.fields.theme[0] == themeId {
+        questionsSort.append(question)
+      }
+    }
+    print(questionsSort)
+    return questionsSort
+  }
+  
+    //  Convertis les options de réponses en un tableau exploitable
+  func convertOptions() {
+    let convertableOptions = questions_vm.questions[indexQuestions].fields.options
+    options = convertableOptions.components(separatedBy: ",")
+  }
+  
+    // Vérifie que la réponse choisie est la bonne en ajoutant 1 au score si cela est vraie et passe a la suivante
+  func verifyAnswer(option: String) {
+    if option == questions_vm.questions[indexQuestions].fields.answer {
+      quizScore += 1
+    }
+    indexQuestions += 1
+    fetchData()
+  }
+  
   var body: some View {
-    VStack {
-      if viewModel.questions.isEmpty {
-        Text("Aucune question trouvée.")
-          .padding()
-      } else {
-        VStack{
-          Spacer()
-          Text(viewModel.questions[indexQuestions].fields.question)
+    NavigationStack{
+      VStack {
+        if questions_vm.questions.isEmpty || themes_vm.themes.isEmpty {
+          Text("Erreur réseau.")
             .padding()
+        } else {
+            // Partie question
+          NavigationLink("", destination: QuizCompleteView(), isActive: $isComplete)
+          VStack{
+            HStack{
+              Text("Score total:")
+              Spacer()
+              Text("\(quizScore)")
+            }
+            .padding()
+            .frame(width: 375, height: 75)
+            .foregroundStyle(.white)
             .font(.title)
+            .bold()
+            .background(Color(backgroundColor))
+            .clipShape(.rect(cornerRadius: 10))
+            Spacer()
+            HStack{
+              Text(questions_vm.questions[indexQuestions].fields.loopThemeId(target: questions_vm.questions[indexQuestions].fields.theme[0], themes: themes_vm.themes))
+                .font(.title)
+                .foregroundStyle(Color(backgroundColor))
+                .bold()
+              Spacer()
+            }
+            Spacer()
+            Text(questions_vm.questions[indexQuestions].fields.question)
+              .padding()
+              .font(.title)
+              .frame(width: 369, height: 225)
+              .foregroundStyle(Color(backgroundColor))
+              .clipShape(.rect(cornerRadius: 15))
+              .bold()
+              .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                  .stroke(Color(backgroundColor), lineWidth: 6)
+              )
+            Spacer()
+              // Partie réponses
+            VStack(spacing: 15){
+              ForEach(options, id: \.self) { option in
+                Button(action: {
+                  if indexQuestions > 10 {
+                    isComplete.toggle()
+                  }
+                  verifyAnswer(option: option)
+                }, label: {
+                  HStack{
+                    Text(option)
+                      .font(.system(size: 18))
+                      .bold()
+                    Spacer()
+                    Image(systemName: "chevron.left.circle.fill")
+                  }
+                  .padding(0)
+                  Spacer()
+                })
+                if option != options.last {
+                  Divider()
+                }
+              }
+            }
+            .padding()
             .frame(width: 375)
             .background(Color(backgroundColor))
             .foregroundStyle(Color.white)
             .clipShape(.rect(cornerRadius: 15))
-            .bold()
-          Spacer()
-          VStack(spacing: 15){
-            ForEach(options, id: \.self) { option in
-              HStack{
-                Text(option)
-                  .font(.system(size: 20))
-                  .bold()
-                Spacer()
-                Image(systemName: "chevron.left.circle.fill")
-              }
-              .padding(0)
-              if option != options.last {
-                Divider()
-              }
-            }
+            Text("Réponse attendues: \(questions_vm.questions[indexQuestions].fields.answer)")
           }
           .padding()
-          .frame(width: 375)
-          .background(Color(backgroundColor))
-          .foregroundStyle(Color.white)
-          .clipShape(.rect(cornerRadius: 15))
         }
       }
+      .onAppear {
+          // Appeler le service pour charger les données dès que l'écran se charge
+        fetchData()
+      }
+      .frame(width: 375)
+      Spacer()
     }
-    .onAppear {
-        // Appeler le service pour charger les données
-      fetchQuestions()
-    }
-    Spacer()
-    Button("Refresh") {
-        // Appeler le service pour charger les données
-      indexQuestions += 1
-      fetchQuestions()
-    }
-    Spacer()
   }
 }
 
