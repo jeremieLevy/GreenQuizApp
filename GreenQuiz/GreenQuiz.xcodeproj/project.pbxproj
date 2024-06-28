@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		80090F442C24245700F8E241 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80090F432C24245700F8E241 /* QuestionView.swift */; };
 		80090F462C24254000F8E241 /* AnswerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80090F452C24254000F8E241 /* AnswerButtonView.swift */; };
+		8038648A2C2EE3470083F5A5 /* GardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803864892C2EE3470083F5A5 /* GardenView.swift */; };
+		8038648C2C2EEFD70083F5A5 /* QuizOfTheDayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038648B2C2EEFD70083F5A5 /* QuizOfTheDayButton.swift */; };
 		803CC4B32C2378F000783EFA /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803CC4B22C2378F000783EFA /* AssetModel.swift */; };
 		806F9DA12C2321E1008703D8 /* QuizPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F9DA02C2321E1008703D8 /* QuizPageView.swift */; };
 		806F9DA32C233033008703D8 /* QuizCatLongButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F9DA22C233033008703D8 /* QuizCatLongButtonView.swift */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		80090F432C24245700F8E241 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		80090F452C24254000F8E241 /* AnswerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButtonView.swift; sourceTree = "<group>"; };
+		803864892C2EE3470083F5A5 /* GardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenView.swift; sourceTree = "<group>"; };
+		8038648B2C2EEFD70083F5A5 /* QuizOfTheDayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOfTheDayButton.swift; sourceTree = "<group>"; };
 		803CC4B22C2378F000783EFA /* AssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
 		806F9DA02C2321E1008703D8 /* QuizPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPageView.swift; sourceTree = "<group>"; };
 		806F9DA22C233033008703D8 /* QuizCatLongButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCatLongButtonView.swift; sourceTree = "<group>"; };
@@ -93,10 +97,9 @@
 		803CC4B12C2378D400783EFA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				803CC4B22C2378F000783EFA /* AssetModel.swift */,
 				ADAF70052C24292B0046D6EA /* Theme.swift */,
 				AD8C7B502C2AE49800A28BCF /* LoginModel.swift */,
-				803CC4B22C2378F000783EFA /* Asset.swift */,
+				803CC4B22C2378F000783EFA /* AssetModel.swift */,
 				A72508BA2C2C3207004E0CD3 /* Question.swift */,
 			);
 			path = Models;
@@ -105,7 +108,7 @@
 		808535592C2375860043192E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				808535532C2371F60043192E /* AssetsLibraryView.swift */,
+				803864892C2EE3470083F5A5 /* GardenView.swift */,
 				AD39BE512C2C587A00056B20 /* CreateAccountView.swift */,
 				AD8C7B4C2C2AB23000A28BCF /* LoginView.swift */,
 				F268FF1C2C2311A0006C5563 /* ProfilView.swift */,
@@ -145,6 +148,7 @@
 				806F9DAA2C237041008703D8 /* MixiquizButtonView.swift */,
 				806F9DA82C236F14008703D8 /* QuizOfTheDayView.swift */,
 				806F9DA22C233033008703D8 /* QuizCatLongButtonView.swift */,
+				8038648B2C2EEFD70083F5A5 /* QuizOfTheDayButton.swift */,
 			);
 			path = Element;
 			sourceTree = "<group>";
@@ -280,7 +284,9 @@
 				AD8C7B4F2C2ADC2400A28BCF /* LoginViewModel.swift in Sources */,
 				806F9DAB2C237041008703D8 /* MixiquizButtonView.swift in Sources */,
 				A72508BB2C2C3207004E0CD3 /* Question.swift in Sources */,
+				8038648C2C2EEFD70083F5A5 /* QuizOfTheDayButton.swift in Sources */,
 				AD8C7B4D2C2AB23000A28BCF /* LoginView.swift in Sources */,
+				8038648A2C2EE3470083F5A5 /* GardenView.swift in Sources */,
 				AD8C7B512C2AE49800A28BCF /* LoginModel.swift in Sources */,
 				A7163B6D2C2EAF980095BC86 /* QuizCompleteView.swift in Sources */,
 				AD39BE522C2C587A00056B20 /* CreateAccountView.swift in Sources */,
