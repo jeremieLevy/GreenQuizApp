@@ -56,5 +56,3 @@ struct FullImg: Decodable {
   let width: Int
   let height: Int
 }
-
-

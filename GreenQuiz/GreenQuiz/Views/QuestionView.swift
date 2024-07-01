@@ -44,25 +44,15 @@ struct QuestionView: View {
   @State public var questions_vm = QuestionViewModel()
   @State public var themes_vm = ThemeViewModel()
   @State var indexQuestions = 0
-  @State var options: [String]
   @State var quizScore = 0
   @State var isComplete = false
-  @State var themeId = ""
+  @State var theme: Theme
   
-    //  Appel l'API
-  func fetchData() {
-    Task{
-      await questions_vm.fetchQuestions()
-      sortData()
-      await themes_vm.fetchThemes()
-      convertOptions()
-    }
-  }
-  
+    //  Trie les questions pour renvoyer les questions spécifiques aux thèmes en cours
   func sortData() -> [Question] {
     var questionsSort: [Question] = []
     for question in questions_vm.questions {
-      if question.fields.theme[0] == themeId {
+      if question.fields.theme[0] == theme.id {
         questionsSort.append(question)
       }
     }
@@ -70,15 +60,18 @@ struct QuestionView: View {
     return questionsSort
   }
   
-    //  Convertis les options de réponses en un tableau exploitable
-  func convertOptions() {
-    let convertableOptions = questions_vm.questions[indexQuestions].fields.options
-    options = convertableOptions.components(separatedBy: ",")
+    //  Appel l'API
+  func fetchData() {
+    Task{
+      await questions_vm.fetchQuestions()
+      await themes_vm.fetchThemes()
+      sortData()
+    }
   }
   
     // Vérifie que la réponse choisie est la bonne en ajoutant 1 au score si cela est vraie et passe a la suivante
-  func verifyAnswer(option: String) {
-    if option == questions_vm.questions[indexQuestions].fields.answer {
+  func verifyAnswer(option: String, answer: String) {
+    if option == answer {
       quizScore += 1
     }
     indexQuestions += 1
@@ -108,56 +101,62 @@ struct QuestionView: View {
             .background(Color(backgroundColor))
             .clipShape(.rect(cornerRadius: 10))
             Spacer()
+              // Affichage de la question
             HStack{
-              Text(questions_vm.questions[indexQuestions].fields.loopThemeId(target: questions_vm.questions[indexQuestions].fields.theme[0], themes: themes_vm.themes))
+              Text(theme.fields.theme)
                 .font(.title)
                 .foregroundStyle(Color(backgroundColor))
                 .bold()
               Spacer()
             }
             Spacer()
-            Text(questions_vm.questions[indexQuestions].fields.question)
-              .padding()
-              .font(.title)
-              .frame(width: 369, height: 225)
-              .foregroundStyle(Color(backgroundColor))
-              .clipShape(.rect(cornerRadius: 15))
-              .bold()
-              .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                  .stroke(Color(backgroundColor), lineWidth: 6)
-              )
-            Spacer()
-              // Partie réponses
-            VStack(spacing: 15){
-              ForEach(options, id: \.self) { option in
-                Button(action: {
-                  if indexQuestions > 10 {
-                    isComplete.toggle()
-                  }
-                  verifyAnswer(option: option)
-                }, label: {
-                  HStack{
-                    Text(option)
-                      .font(.system(size: 18))
-                      .bold()
+            if sortData().count < indexQuestions {
+              Text("Question introuvable !")
+            } else {
+              let question = sortData()[indexQuestions]
+              Text(question.fields.question)
+                .padding()
+                .font(.title)
+                .frame(width: 369, height: 225)
+                .foregroundStyle(Color(backgroundColor))
+                .clipShape(.rect(cornerRadius: 15))
+                .bold()
+                .overlay(
+                  RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color(backgroundColor), lineWidth: 6)
+                )
+              Spacer()
+                // Partie réponses
+              VStack(spacing: 15){
+                ForEach(question.fields.convertOptions(), id: \.self) { option in
+                  Button(action: {
+                    if indexQuestions == 10 {
+                      isComplete.toggle()
+                    }
+                    verifyAnswer(option: option, answer: question.fields.answer)
+                  }, label: {
+                    HStack{
+                      Text(option)
+                        .font(.system(size: 18))
+                        .bold()
+                      Spacer()
+                      Image(systemName: "chevron.left.circle.fill")
+                    }
+                    .padding(0)
                     Spacer()
-                    Image(systemName: "chevron.left.circle.fill")
+                  })
+                  if option != question.fields.convertOptions().last {
+                    Divider()
                   }
-                  .padding(0)
-                  Spacer()
-                })
-                if option != options.last {
-                  Divider()
                 }
               }
+              .padding()
+              .frame(width: 375)
+              .background(Color(backgroundColor))
+              .foregroundStyle(Color.white)
+              .clipShape(.rect(cornerRadius: 15))
+              Text("Réponse attendues: \(question.fields.answer)")
             }
-            .padding()
-            .frame(width: 375)
-            .background(Color(backgroundColor))
-            .foregroundStyle(Color.white)
-            .clipShape(.rect(cornerRadius: 15))
-            Text("Réponse attendues: \(questions_vm.questions[indexQuestions].fields.answer)")
           }
           .padding()
         }
@@ -165,6 +164,8 @@ struct QuestionView: View {
       .onAppear {
           // Appeler le service pour charger les données dès que l'écran se charge
         fetchData()
+          // Remet a 0 le score 
+        quizScore = 0
       }
       .frame(width: 375)
       Spacer()
@@ -172,6 +173,6 @@ struct QuestionView: View {
   }
 }
 
-#Preview {
-  QuestionView(options: [""])
-}
+  //#Preview {
+  //  QuestionView(theme: themes_vm.themes[0])
+  //}

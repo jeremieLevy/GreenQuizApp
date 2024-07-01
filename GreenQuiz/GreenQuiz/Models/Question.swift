@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct QuestionResponse: Decodable {
+struct QuestionResponse: Codable {
   var records: [Question]
 }
 
-struct Question: Identifiable, Decodable {
+struct Question: Identifiable, Codable {
   let id: String
   let createdTime: String
   let fields: QuestionFields
 }
 
-struct QuestionFields: Decodable {
+struct QuestionFields: Codable {
   let answer: String
   let question: String
   let options: String
@@ -34,5 +34,12 @@ struct QuestionFields: Decodable {
       }
     }
     return "Thème non attribué"
+  }
+  
+    //  Convertis les options de réponses en un tableau exploitable
+  func convertOptions() -> [String] {
+    let convertableOptions = options
+    var convertOptions = convertableOptions.components(separatedBy: ",")
+    return convertOptions
   }
 }

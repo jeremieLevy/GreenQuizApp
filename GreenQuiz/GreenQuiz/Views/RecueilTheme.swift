@@ -9,18 +9,16 @@ import SwiftUI
 
 struct RecueilTheme: View {
     
-    var title: String
-    
     let adaptativeColumns = [
         GridItem(.adaptive(minimum: 168))
     ]
     
     @State var searchText: String = ""
-    @State var vm = ThemeViewModel()
+    @State var theme_vm = ThemeViewModel()
     
     func fetchThemes() {
         Task{
-            await vm.fetchThemes()
+            await theme_vm.fetchThemes()
         }
     }
     
@@ -30,13 +28,13 @@ struct RecueilTheme: View {
                 VStack{
                     SearchBarPerso(searchText: $searchText)
                     LazyVGrid(columns: adaptativeColumns, spacing: 16, content: {
-                        ForEach(vm.themes) { theme in
+                      ForEach(theme_vm.themes) { theme in
 //                            if  searchText.isEmpty ||
 //                                vm.theme.description.localizedStandardContains(searchText) || vm.theme.localizedStandardContains(searchText){
                             ZStack {
                                 
                                 NavigationLink {
-//                                    RecueilList(theme: QuestionView)
+                                  QuestionView(theme: theme)
                                 } label: {
                                     ZStack{
                                         RoundedRectangle(cornerRadius: 20)
@@ -74,8 +72,6 @@ struct RecueilTheme: View {
                     })
                     
                 }
-                
-                .navigationTitle(title)
                 .toolbarBackground(.greeny, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
                 .toolbar(content: {
@@ -95,5 +91,5 @@ struct RecueilTheme: View {
 }
 
 #Preview {
-    RecueilTheme(title: "Recueil")
+    RecueilTheme()
 }
