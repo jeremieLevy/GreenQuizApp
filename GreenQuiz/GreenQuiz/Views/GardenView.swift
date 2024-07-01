@@ -40,7 +40,7 @@ struct GardenView: View {
                         }
                     }
                     NavigationLink {
-                        QuestionView(options: [""])
+//                        QuestionView(options: [""], theme: Theme)
                     } label: {
                         QuizOfTheDayButton()
                             .padding(.top, 40)
