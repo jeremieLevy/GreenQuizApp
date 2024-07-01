@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
             TabView(selection: $tabSelection){
                 
-                ProfilView()
+                GardenView()
                     .tag(1)
                 
                 
@@ -22,7 +22,7 @@ struct ContentView: View {
                     .tag(2)
                 
                 
-                RecueilTheme(title: "Recueil")
+                RecueilTheme()
                     .tag(3)
                 
             }
