@@ -19,8 +19,7 @@ struct AssetView: View {
             } else {
                 Rectangle()
                     .ignoresSafeArea()
-                    .foregroundStyle(.gray)
-                    .opacity(0.2)
+                    .foregroundStyle(.primaryApp)
                 ScrollView {
                     Spacer()
                     Text("Personnaliser le jardin")

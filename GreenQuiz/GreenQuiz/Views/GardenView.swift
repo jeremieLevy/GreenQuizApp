@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct GardenView: View {
+    
+    
+    @State var gardenTitle: GardenViewModel
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Rectangle()
                     .ignoresSafeArea()
@@ -19,16 +23,19 @@ struct GardenView: View {
                         Spacer()
                         ProfilButton()
                     }.padding(.horizontal)
-                    Text("Garden Title")
+                    Text(gardenTitle.gardenName)
                         .font(.system(size: 50))
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
                         .padding(.top, 20)
-                    Image("GardenView")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 350)
-                        .shadow(radius: 10, y: 30)
+                    NavigationLink {
+                        GardenCustomView(gardenNameField: $gardenTitle)
+                    } label: {
+                        Image("GardenView_Small")
+                            .resizable()
+                            .scaledToFit()
+                            .shadow(radius: 10, y: 30)
+                    }
                     ShareLink(item: String("Share".description)) {
                         VStack {
                             Image(systemName: "square.and.arrow.up")
@@ -45,7 +52,6 @@ struct GardenView: View {
                         QuizOfTheDayButton()
                             .padding(.top, 40)
                     }
-                    
                     Spacer()
                 }
             }
@@ -54,7 +60,7 @@ struct GardenView: View {
 }
 
 #Preview {
-    GardenView()
+    GardenView(gardenTitle: GardenViewModel())
 }
 
 

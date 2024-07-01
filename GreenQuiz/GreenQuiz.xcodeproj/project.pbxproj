@@ -11,6 +11,8 @@
 		80090F462C24254000F8E241 /* AnswerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80090F452C24254000F8E241 /* AnswerButtonView.swift */; };
 		8038648A2C2EE3470083F5A5 /* GardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803864892C2EE3470083F5A5 /* GardenView.swift */; };
 		8038648C2C2EEFD70083F5A5 /* QuizOfTheDayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038648B2C2EEFD70083F5A5 /* QuizOfTheDayButton.swift */; };
+		803864902C3299420083F5A5 /* GardenCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038648F2C3299420083F5A5 /* GardenCustomView.swift */; };
+		803864922C329E090083F5A5 /* GardenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803864912C329E090083F5A5 /* GardenViewModel.swift */; };
 		803CC4B32C2378F000783EFA /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803CC4B22C2378F000783EFA /* AssetModel.swift */; };
 		806F9DA12C2321E1008703D8 /* QuizPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F9DA02C2321E1008703D8 /* QuizPageView.swift */; };
 		806F9DA32C233033008703D8 /* QuizCatLongButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F9DA22C233033008703D8 /* QuizCatLongButtonView.swift */; };
@@ -49,6 +51,8 @@
 		80090F452C24254000F8E241 /* AnswerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButtonView.swift; sourceTree = "<group>"; };
 		803864892C2EE3470083F5A5 /* GardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenView.swift; sourceTree = "<group>"; };
 		8038648B2C2EEFD70083F5A5 /* QuizOfTheDayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOfTheDayButton.swift; sourceTree = "<group>"; };
+		8038648F2C3299420083F5A5 /* GardenCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCustomView.swift; sourceTree = "<group>"; };
+		803864912C329E090083F5A5 /* GardenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenViewModel.swift; sourceTree = "<group>"; };
 		803CC4B22C2378F000783EFA /* AssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
 		806F9DA02C2321E1008703D8 /* QuizPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPageView.swift; sourceTree = "<group>"; };
 		806F9DA22C233033008703D8 /* QuizCatLongButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCatLongButtonView.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				803864892C2EE3470083F5A5 /* GardenView.swift */,
+				8038648F2C3299420083F5A5 /* GardenCustomView.swift */,
 				AD39BE512C2C587A00056B20 /* CreateAccountView.swift */,
 				AD8C7B4C2C2AB23000A28BCF /* LoginView.swift */,
 				F268FF1C2C2311A0006C5563 /* ProfilView.swift */,
@@ -127,6 +132,7 @@
 		8085355A2C23758F0043192E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				803864912C329E090083F5A5 /* GardenViewModel.swift */,
 				808535572C2375770043192E /* AssetsViewModel.swift */,
 				AD8C7B4E2C2ADC2400A28BCF /* LoginViewModel.swift */,
 				ADAF70002C2426370046D6EA /* ThemeViewModel.swift */,
@@ -273,6 +279,7 @@
 				AD7B30752C2306FD007A44DF /* RecueilTheme.swift in Sources */,
 				A72508BD2C2C3269004E0CD3 /* QuestionViewModel.swift in Sources */,
 				C3DBC0D12C2300DA0027C35E /* GreenQuizApp.swift in Sources */,
+				803864922C329E090083F5A5 /* GardenViewModel.swift in Sources */,
 				F2AF61E22C24296900B5DF73 /* ProgressionBar.swift in Sources */,
 				ADAF6FFF2C2413620046D6EA /* ThemeView.swift in Sources */,
 				ADAF700A2C24460C0046D6EA /* FunFactDetail.swift in Sources */,
@@ -284,6 +291,7 @@
 				AD8C7B4F2C2ADC2400A28BCF /* LoginViewModel.swift in Sources */,
 				806F9DAB2C237041008703D8 /* MixiquizButtonView.swift in Sources */,
 				A72508BB2C2C3207004E0CD3 /* Question.swift in Sources */,
+				803864902C3299420083F5A5 /* GardenCustomView.swift in Sources */,
 				8038648C2C2EEFD70083F5A5 /* QuizOfTheDayButton.swift in Sources */,
 				AD8C7B4D2C2AB23000A28BCF /* LoginView.swift in Sources */,
 				8038648A2C2EE3470083F5A5 /* GardenView.swift in Sources */,
