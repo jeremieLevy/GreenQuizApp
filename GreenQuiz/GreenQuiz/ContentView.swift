@@ -22,7 +22,7 @@ struct ContentView: View {
                     .tag(2)
                 
                 
-                ProfilView()
+                RecueilTheme(title: "Recueil")
                     .tag(3)
                 
             }
