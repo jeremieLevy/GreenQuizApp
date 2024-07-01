@@ -18,7 +18,6 @@ struct ParametreView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(Color.green)
-            //Oui je sais que c'est un vert dégueulasse mais on a toujours pas mis de code couleur :(
                 .edgesIgnoringSafeArea(.all)
             
             VStack {

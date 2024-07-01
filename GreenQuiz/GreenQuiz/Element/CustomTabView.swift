@@ -12,7 +12,7 @@ struct CustomTabView: View {
     @Namespace private var animationNamespace
     
     let tabBarItems: [(image: String, title: String)] = [
-        ("leaf", "Home"),
+        ("leaf", "Jardin"),
         ("doc.questionmark", "Quiz"),
         ("text.book.closed", "Recueil")
     ]
@@ -20,24 +20,28 @@ struct CustomTabView: View {
     var body: some View {
         ZStack{
             HStack {
-                Circle()
-                    .frame(height: 80)
-                    .foregroundStyle(Color(.secondarySystemBackground))
-                    .shadow(radius: 2)
-                    .padding(.horizontal, 18)
-                
-                Circle()
-                    .frame(height: 80)
-                    .foregroundStyle(Color(.secondarySystemBackground))
-                    .shadow(radius: 2)
-                    .padding(.horizontal, 18)
+                    Circle()
+                        .frame(height: 65)
+                        .foregroundStyle(Color(.secondarySystemBackground))
+                        .shadow(radius: 2)
+                        .padding(.horizontal, 25)
             
+                    
+                    Circle()
+                            .frame(height: 65)
+                            .foregroundStyle(Color(.secondarySystemBackground))
+                            .shadow(radius: 2)
+                        .padding(.horizontal, 25)
                 
-                Circle()
-                    .frame(height: 80)
-                    .foregroundStyle(Color(.secondarySystemBackground))
-                    .shadow(radius: 2)
-                    .padding(.horizontal, 18)
+                    
+                    
+                    Circle()
+                            .frame(height: 65)
+                            .foregroundStyle(Color(.secondarySystemBackground))
+                            .shadow(radius: 2)
+                        .padding(.horizontal, 25)
+                
+                
             }
             
             HStack{
@@ -45,30 +49,30 @@ struct CustomTabView: View {
                     Button {
                         tabSelection = index + 1
                     } label :{
-                        VStack(spacing: 8){
+                        VStack(spacing: 4){
                             Spacer()
                             
-                            Image(systemName: tabBarItems[index].image)
+                            Image(systemName: tabBarItems[index].image).font(.system(size: 20))
                             
-                            Text(tabBarItems[index].title)
+                            Text(tabBarItems[index].title).font(.system(size: 13))
                             
                             if index + 1 == tabSelection{
                                 Capsule()
-                                    .frame(height: 8)
-                                    .foregroundStyle(.blue)
+                                    .frame(height: 4)
+                                    .foregroundStyle(.greeny)
                                     .matchedGeometryEffect(id: "SelecedTabId", in: animationNamespace)
-                                    .offset(y:3)
+                                    .offset(y:2)
                             } else {
                                 Capsule()
-                                    .frame(height: 8)
+                                    .frame(height: 4)
                                     .foregroundStyle(.clear)
-                                    .offset(y:3)
+                                    .offset(y:2)
                             }
                         }
-                        .foregroundColor(index + 1 == tabSelection ? .blue : .gray)
+                        .foregroundColor(index + 1 == tabSelection ? .greeny : .gray)
                     }
                 }
-                .frame(height: 80)
+                .frame(height: 65)
                 .clipShape(Circle())
             }
             .padding(.horizontal)
