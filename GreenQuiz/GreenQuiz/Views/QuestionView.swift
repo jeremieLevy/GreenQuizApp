@@ -46,7 +46,7 @@ struct QuestionView: View {
   @State var indexQuestions = 0
   @State var quizScore = 0
   @State var isComplete = false
-  @State var theme: Theme
+  var theme: Theme
   
     //  Trie les questions pour renvoyer les questions spécifiques aux thèmes en cours
   func sortData() -> [Question] {
@@ -75,7 +75,6 @@ struct QuestionView: View {
       quizScore += 1
     }
     indexQuestions += 1
-    fetchData()
   }
   
   var body: some View {
@@ -86,7 +85,7 @@ struct QuestionView: View {
             .padding()
         } else {
             // Partie question
-          NavigationLink("", destination: QuizCompleteView(), isActive: $isComplete)
+          NavigationLink("", isActive: $isComplete) { QuizCompleteView(score: quizScore) }
           VStack{
             HStack{
               Text("Score total:")
@@ -130,7 +129,7 @@ struct QuestionView: View {
               VStack(spacing: 15){
                 ForEach(question.fields.convertOptions(), id: \.self) { option in
                   Button(action: {
-                    if indexQuestions == 10 {
+                    if indexQuestions == sortData().count {
                       isComplete.toggle()
                     }
                     verifyAnswer(option: option, answer: question.fields.answer)
@@ -155,7 +154,7 @@ struct QuestionView: View {
               .background(Color(backgroundColor))
               .foregroundStyle(Color.white)
               .clipShape(.rect(cornerRadius: 15))
-              Text("Réponse attendues: \(question.fields.answer)")
+//              Text("Réponse attendues: \(question.fields.answer)")
             }
           }
           .padding()
@@ -164,7 +163,7 @@ struct QuestionView: View {
       .onAppear {
           // Appeler le service pour charger les données dès que l'écran se charge
         fetchData()
-          // Remet a 0 le score 
+          // Remet a 0 le score
         quizScore = 0
       }
       .frame(width: 375)
@@ -172,7 +171,3 @@ struct QuestionView: View {
     }
   }
 }
-
-  //#Preview {
-  //  QuestionView(theme: themes_vm.themes[0])
-  //}

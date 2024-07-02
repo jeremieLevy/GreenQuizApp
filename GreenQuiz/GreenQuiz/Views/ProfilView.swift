@@ -14,7 +14,6 @@ struct ProfilView: View {
     
     var body: some View {
         NavigationView {
-                
                 ZStack {
                     RoundedRectangle(cornerRadius: 25.0)
                         .fill(Color.green)
@@ -32,7 +31,6 @@ struct ProfilView: View {
                             .foregroundStyle(.white)
                             .font(.system(size : 30, weight: .bold))
                         
-                        
                         HStack {
                             // ce qui est en com c'est pour mettre en mode "normal" d'utilisation avec plus tard le branchement à faire aussi avec les données de l'utilisateur selon l'XP récolté, là c'est juste pour illustrer
                             //Text("\(Int(percent))%")
@@ -47,8 +45,7 @@ struct ProfilView: View {
                                 .font(.system(size : 20, weight: .bold))
                                 .foregroundStyle(.white)
                         }
-                        
-                        
+
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(.white)
@@ -78,7 +75,6 @@ struct ProfilView: View {
             }
         }
     }
-
 
 #Preview {
     ProfilView()

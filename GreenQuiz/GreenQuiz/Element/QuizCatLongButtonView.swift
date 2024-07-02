@@ -13,24 +13,25 @@ struct QuizCatLongButtonView: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
-            .foregroundStyle(.white)
-            .frame(width: 320, height: 45)
-            .overlay() {
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(.black, lineWidth: 1.5)
-                HStack {
-                    Text(catTitle)
-                        .padding(.leading)
-                    Spacer()
-                    Image(catImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 35)
-                        .padding(.trailing)
-                }
+          .foregroundStyle(.white)
+          .frame(width: 320, height: 45)
+          .overlay() {
+            RoundedRectangle(cornerRadius: 20)
+              .stroke(.black, lineWidth: 1.5)
+            HStack {
+              Text(catTitle)
+                .padding(.leading)
+                .foregroundStyle(.black)
+              Spacer()
+              Image(catImage)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 35)
+                .padding(.trailing)
             }
+          }
+      }
     }
-}
 
 #Preview {
     QuizCatLongButtonView(catTitle: "Recyclage", catImage: "Capture d’écran 2024-06-19 à 18.13.07")

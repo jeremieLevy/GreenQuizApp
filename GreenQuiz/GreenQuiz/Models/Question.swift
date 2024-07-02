@@ -25,21 +25,10 @@ struct QuestionFields: Codable {
   let title: String
   let theme: [String]
   
-  func loopThemeId(target: String, themes: [Theme]) -> String {
-    var targetTheme: String
-    for theme in themes {
-      if target == theme.id {
-        targetTheme = theme.fields.theme
-        return targetTheme
-      }
-    }
-    return "Thème non attribué"
-  }
-  
     //  Convertis les options de réponses en un tableau exploitable
   func convertOptions() -> [String] {
     let convertableOptions = options
-    var convertOptions = convertableOptions.components(separatedBy: ",")
+    let convertOptions = convertableOptions.components(separatedBy: ",")
     return convertOptions
   }
 }

@@ -14,11 +14,11 @@ struct RecueilTheme: View {
     ]
     
     @State var searchText: String = ""
-    @State var theme_vm = ThemeViewModel()
+    @State var themes_vm = ThemeViewModel()
     
     func fetchThemes() {
         Task{
-            await theme_vm.fetchThemes()
+            await themes_vm.fetchThemes()
         }
     }
     
@@ -27,14 +27,13 @@ struct RecueilTheme: View {
             ScrollView {
                 VStack{
                     SearchBarPerso(searchText: $searchText)
-                    LazyVGrid(columns: adaptativeColumns, spacing: 16, content: {
-                      ForEach(theme_vm.themes) { theme in
+                    LazyVGrid(columns: adaptativeColumns, spacing: 15, content: {
+                      ForEach(themes_vm.themes) { theme in
 //                            if  searchText.isEmpty ||
 //                                vm.theme.description.localizedStandardContains(searchText) || vm.theme.localizedStandardContains(searchText){
                             ZStack {
-                                
                                 NavigationLink {
-                                  QuestionView(theme: theme)
+                                  RecueilList(theme: theme)
                                 } label: {
                                     ZStack{
                                         RoundedRectangle(cornerRadius: 20)
@@ -58,19 +57,12 @@ struct RecueilTheme: View {
                                                         .frame(width: 100)
                                                 }
                                             }
-
                                         }
                                     }
-                                    
                                 }
-//                                //                                }
                             }
-                            
                         }
-                        
-                        
-                    })
-                    
+                    }) 
                 }
                 .toolbarBackground(.greeny, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
@@ -87,7 +79,6 @@ struct RecueilTheme: View {
             
         }
     }
-    
 }
 
 #Preview {

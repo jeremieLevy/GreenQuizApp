@@ -9,8 +9,8 @@ import SwiftUI
 
 struct QuizCompleteView: View {
   
-//  @Binding var score: QuestionView
   var backgroundColor = "PrimaryAppColor"
+  @State var score: Int
 
     var body: some View {
       VStack{
@@ -19,6 +19,7 @@ struct QuizCompleteView: View {
           .font(.largeTitle)
           .foregroundStyle(Color(backgroundColor))
           .bold()
+        Text("\(score)")
         Spacer()
         Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
           ZStack{
@@ -37,5 +38,5 @@ struct QuizCompleteView: View {
 }
 
 #Preview {
-  QuizCompleteView()
+  QuizCompleteView(score: 0)
 }
