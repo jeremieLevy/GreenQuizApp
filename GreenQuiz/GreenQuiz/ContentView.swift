@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
             TabView(selection: $tabSelection){
                 
-                GardenView()
+                GardenView(gardenTitle: GardenViewModel())
                     .tag(1)
                 
                 
