@@ -13,11 +13,18 @@ struct LoginView: View {
     
     @State private var email = ""
     @State private var password = ""
+    @Binding var showLogin: Bool
     
     
     func fetchUsers() {
         Task{
             await viewModel.fetchUsers()
+        }
+    }
+    
+    func checkUser(email: String, password: String) {
+        Task{
+            await viewModel.checkhUser(email: email, password: password)
         }
     }
     var body: some View {
@@ -60,31 +67,44 @@ struct LoginView: View {
                         .clipShape(.rect(cornerRadius: 15))
                         .padding(.horizontal, 50)
                     
-                    Button(action: {
-                        // oublie de password
-                    }, label: {
-                        Text("Mot de passe oublié ?")
-                            .foregroundStyle(.white)
-                            .font(.footnote)
-                            .padding(5)
-                    })
+//                    Button(action: {
+//                        // oublie de password
+//                    }, label: {
+//                        Text("Mot de passe oublié ?")
+//                            .foregroundStyle(.white)
+//                            .font(.footnote)
+//                            .padding(5)
+//                    })
                     
                     Spacer()
                         .frame(height: 30)
                     
                         Button(action: {
-                            fetchUsers()
-                            if !viewModel.users.isEmpty {
-                            for user in viewModel.users {
-                                if user.fields.email.lowercased() == email.lowercased() && user.fields.password == password {
+                           checkUser(email: email, password: password)
+                            DispatchQueue.global().async{
+                                Thread.sleep(forTimeInterval: 0.8)
+                                if !viewModel.isLoging{
+                                    showLogin = false
                                     print("connexion ok")
-                                    return
+                                }else{
+                                    print("pas co")
                                 }
                             }
-                        }else {
-                            }
-                    
-                        print("Échec de la connexion.")
+                            
+                            
+//                            fetchUsers()
+//                            if !viewModel.users.isEmpty {
+//                            for user in viewModel.users {
+//                                if user.fields.email.lowercased() == email.lowercased() && user.fields.password == password {
+//                                    print("connexion ok")
+//                                    isConnected.toggle()
+//                                    return
+//                                }
+//                            }
+//                        }else {
+//                            }
+//                    
+//                        print("Échec de la connexion.")
                             
                         }, label: {
                             Text("Se connecter")
@@ -112,5 +132,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(showLogin: .constant(true))
 }
