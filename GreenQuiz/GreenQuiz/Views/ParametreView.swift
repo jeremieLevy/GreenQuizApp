@@ -15,59 +15,123 @@ struct ParametreView: View {
     
     var body: some View {
         
-        ZStack {
+        ZStack(alignment: .top) {
             RoundedRectangle(cornerRadius: 25.0)
-                .fill(Color.green)
+                .fill(Color.greeny)
                 .edgesIgnoringSafeArea(.all)
             
-            VStack {
-                List {
-                    VStack {
-                        Toggle("Recevoir les notifications", isOn: $showGreeting)
-                    }
+            VStack(alignment: .leading, spacing: 20) { // Augmenter l'espacement entre les éléments
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.white)
+                        .frame(height: 50) // Ajuster la hauteur
+                    Toggle("Recevoir les notifications", isOn: $showGreeting)
+                        .padding(.horizontal)
+                }
+                .padding(.horizontal)
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.white)
+                        .frame(height: 50) // Ajuster la hauteur
                     Button(action: {
                         self.alertMessage = "Voulez-vous modifier votre mot de passe ?"
                         self.showAlert.toggle()
                     }) {
-                        Text("Modifier votre mot de passe")
-                            .foregroundStyle(.black)
+                        HStack {
+                            Text("Modifier votre mot de passe")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .foregroundStyle(.black)
+                        .padding(.horizontal)
                     }
+                }
+                .padding(.horizontal)
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.white)
+                        .frame(height: 50) // Ajuster la hauteur
                     Button(action: {
                         self.alertMessage = "Voulez-vous modifier votre mail ?"
                         self.showAlert.toggle()
                     }) {
-                        Text("Modifier votre mail")
-                            .foregroundStyle(.black)
+                        HStack {
+                            Text("Modifier votre mail")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .foregroundStyle(.black)
+                        .padding(.horizontal)
                     }
+                }
+                .padding(.horizontal)
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.white)
+                        .frame(height: 50) // Ajuster la hauteur
                     Button(action: {
                         self.alertMessage = "Voulez-vous modifier votre numéro de téléphone ?"
                         self.showAlert.toggle()
                     }) {
-                        Text("Modifier votre numéro de téléphone")
-                            .foregroundStyle(.black)
+                        HStack {
+                            Text("Modifier votre numéro de téléphone")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .foregroundStyle(.black)
+                        .padding(.horizontal)
                     }
+                }
+                .padding(.horizontal)
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.white)
+                        .frame(height: 50) // Ajuster la hauteur
                     Button(action: {
                         self.alertMessage = "Voulez-vous modifier votre photo de profil ?"
                         self.showAlert.toggle()
                     }) {
-                        Text("Modifier votre photo de profil")
-                            .foregroundStyle(.black)
+                        HStack {
+                            Text("Modifier votre photo de profil")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .foregroundStyle(.black)
+                        .padding(.horizontal)
                     }
+                }
+                .padding(.horizontal)
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.white)
+                        .frame(height: 50) // Ajuster la hauteur
                     Button(action: {
                         self.alertMessage = "Êtes-vous sûr de vouloir supprimer votre compte :( ?"
                         self.showAlert.toggle()
                     }) {
-                        Text("Supprimer le compte :(").foregroundStyle(.red)
+                        HStack {
+                            Text("Déconnexion")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .foregroundStyle(.red)
+                        .padding(.horizontal)
                     }
                 }
+                .padding(.horizontal)
             }
+            .padding(.top, 20) // Ajouter de l'espace en haut pour éloigner du bord supérieur
             .alert(isPresented: $showAlert, content: {
                 Alert(title: Text("Paramètres"), message: Text(alertMessage), primaryButton: .default(Text("Oui")), secondaryButton: .cancel(Text("Non")))
             })
         }
     }
 }
-
 
 struct parametre_Previews: PreviewProvider {
     static var previews: some View {
