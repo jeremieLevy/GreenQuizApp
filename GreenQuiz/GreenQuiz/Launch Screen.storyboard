@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoGreenQuiz-White" translatesAutoresizingMaskIntoConstraints="NO" id="oWe-p7-X33">
-                                <rect key="frame" x="72" y="294" width="249" height="226"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoAccueil" translatesAutoresizingMaskIntoConstraints="NO" id="01x-sH-ya5">
+                                <rect key="frame" x="49" y="286" width="295" height="281"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -31,7 +31,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LogoGreenQuiz-White" width="150" height="186"/>
+        <image name="LogoAccueil" width="5685" height="6400"/>
         <namedColor name="PrimaryAppColor">
             <color red="0.2627450980392157" green="0.45882352941176469" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
