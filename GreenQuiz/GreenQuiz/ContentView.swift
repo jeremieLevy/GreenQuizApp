@@ -26,7 +26,7 @@ struct ContentView: View {
                     .tag(3)
                 
             }
-            .overlay(alignment : .bottom){
+            .overlay(alignment : .bottom) {
                 CustomTabView(tabSelection: $tabSelection)
             }
         }

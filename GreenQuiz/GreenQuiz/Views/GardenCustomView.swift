@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+
 struct GardenCustomView: View {
+    
+    @State private var gardenPlateform: [AssetModel] = []
     
     @State private var showingAssets = false
     @Binding var gardenNameField: GardenViewModel
@@ -17,18 +20,19 @@ struct GardenCustomView: View {
             ZStack {
                 Rectangle()
                     .ignoresSafeArea()
-                    .foregroundStyle(.primaryApp)
+                    .foregroundStyle(.greeny)
                 VStack(alignment: .trailing) {
                     TextField("", text: $gardenNameField.gardenName, prompt: Text("Nommez votre jardin (max 15)").fontWeight(.medium).font(.system(size: 20)).foregroundStyle(.white.opacity(0.5)))
                         .multilineTextAlignment(.center)
                         .font(.system(size: 50))
                         .fontWeight(.bold)
                         .foregroundStyle(Color.white)
+                        .padding(.bottom, -50)
                     Image("GardenView")
                         .resizable()
-                        .frame(width: 600, height: 600)
+                        .frame(width: 700, height: 700)
                         .shadow(radius: 10, y: 50)
-                        .padding(.bottom, -50)
+                        .padding(.top, -50)
                         
                     Button {
                         showingAssets.toggle()
@@ -38,7 +42,8 @@ struct GardenCustomView: View {
                     .sheet(isPresented: $showingAssets, content: {AssetView()})
                     .foregroundStyle(.white)
                     .font(.largeTitle)
-                    .padding(.horizontal, 150)
+                    .padding(.horizontal, 200)
+                    .padding(.top, -100)
 
                 }
             }

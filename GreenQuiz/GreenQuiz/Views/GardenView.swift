@@ -10,6 +10,8 @@ import SwiftUI
 struct GardenView: View {
     
     
+    
+    
     @State var gardenTitle: GardenViewModel
     
     var body: some View {
@@ -17,17 +19,14 @@ struct GardenView: View {
             ZStack {
                 Rectangle()
                     .ignoresSafeArea()
-                    .foregroundStyle(.primaryApp)
+                    .foregroundStyle(.greeny)
                 VStack {
-                    HStack {
-                        Spacer()
-                        ProfilButton()
-                    }.padding(.horizontal)
                     Text(gardenTitle.gardenName)
                         .font(.system(size: 50))
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
                         .padding(.top, 20)
+                        .padding(.bottom, -20)
                     NavigationLink {
                         GardenCustomView(gardenNameField: $gardenTitle)
                     } label: {
@@ -35,6 +34,7 @@ struct GardenView: View {
                             .resizable()
                             .scaledToFit()
                             .shadow(radius: 10, y: 30)
+                            .padding(.bottom, -20)
                     }
                     ShareLink(item: String("Share".description)) {
                         VStack {
@@ -45,7 +45,7 @@ struct GardenView: View {
                                 .foregroundStyle(.white)
                                 .font(.headline)
                         }
-                    }
+                    }.padding(.bottom, -10)
                     NavigationLink {
 //                      QuestionView(theme: <#Theme#>)
                     } label: {
@@ -54,6 +54,19 @@ struct GardenView: View {
                     }
                     Spacer()
                 }
+                .toolbar(content: {
+                    ToolbarItem(placement: .topBarLeading) {
+                        NavigationLink {
+                            ParametreView()
+                        } label: {
+                            Image(systemName: "gearshape.fill")
+                                .foregroundStyle(.white)
+                        }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        ProfilButton()
+                    }
+                })
             }
         }
     }
