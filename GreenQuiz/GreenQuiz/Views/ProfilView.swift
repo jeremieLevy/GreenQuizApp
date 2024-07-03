@@ -15,7 +15,7 @@ struct ProfilView: View {
     var body: some View {
         NavigationView {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25.0)
+                    Rectangle()
                         .fill(Color.greeny)
                     //Oui je sais que c'est un vert dégueulasse mais on a toujours pas mis de code couleur :(
                         .edgesIgnoringSafeArea(.all)

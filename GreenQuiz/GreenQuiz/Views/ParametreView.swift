@@ -20,11 +20,11 @@ struct ParametreView: View {
                 .fill(Color.greeny)
                 .edgesIgnoringSafeArea(.all)
             
-            VStack(alignment: .leading, spacing: 20) { // Augmenter l'espacement entre les éléments
+            VStack(alignment: .leading, spacing: 20) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color.white)
-                        .frame(height: 50) // Ajuster la hauteur
+                        .frame(height: 50)
                     Toggle("Recevoir les notifications", isOn: $showGreeting)
                         .padding(.horizontal)
                 }
@@ -33,7 +33,7 @@ struct ParametreView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color.white)
-                        .frame(height: 50) // Ajuster la hauteur
+                        .frame(height: 50)
                     Button(action: {
                         self.alertMessage = "Voulez-vous modifier votre mot de passe ?"
                         self.showAlert.toggle()
@@ -52,7 +52,7 @@ struct ParametreView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color.white)
-                        .frame(height: 50) // Ajuster la hauteur
+                        .frame(height: 50)
                     Button(action: {
                         self.alertMessage = "Voulez-vous modifier votre mail ?"
                         self.showAlert.toggle()
@@ -71,7 +71,7 @@ struct ParametreView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color.white)
-                        .frame(height: 50) // Ajuster la hauteur
+                        .frame(height: 50)
                     Button(action: {
                         self.alertMessage = "Voulez-vous modifier votre numéro de téléphone ?"
                         self.showAlert.toggle()
@@ -90,7 +90,7 @@ struct ParametreView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color.white)
-                        .frame(height: 50) // Ajuster la hauteur
+                        .frame(height: 50)
                     Button(action: {
                         self.alertMessage = "Voulez-vous modifier votre photo de profil ?"
                         self.showAlert.toggle()
@@ -109,9 +109,9 @@ struct ParametreView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color.white)
-                        .frame(height: 50) // Ajuster la hauteur
+                        .frame(height: 50)
                     Button(action: {
-                        self.alertMessage = "Êtes-vous sûr de vouloir supprimer votre compte :( ?"
+                        self.alertMessage = "Êtes-vous sûr de vouloir vous déconnecter ?"
                         self.showAlert.toggle()
                     }) {
                         HStack {
@@ -124,8 +124,27 @@ struct ParametreView: View {
                     }
                 }
                 .padding(.horizontal)
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.white)
+                        .frame(height: 50)
+                    Button(action: {
+                        self.alertMessage = "Êtes-vous sûr de vouloir supprimer votre compte :( ?"
+                        self.showAlert.toggle()
+                    }) {
+                        HStack {
+                            Text("Supprimer votre compte")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .foregroundStyle(.red)
+                        .padding(.horizontal)
+                    }
+                }
+                .padding(.horizontal)
             }
-            .padding(.top, 20) // Ajouter de l'espace en haut pour éloigner du bord supérieur
+            .padding(.top, 20)
             .alert(isPresented: $showAlert, content: {
                 Alert(title: Text("Paramètres"), message: Text(alertMessage), primaryButton: .default(Text("Oui")), secondaryButton: .cancel(Text("Non")))
             })
