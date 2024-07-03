@@ -51,17 +51,15 @@ struct CustomTabView: View {
                     } label :{
                         VStack(spacing: 4){
                             Spacer()
-                            
                             Image(systemName: tabBarItems[index].image).font(.system(size: 20))
-                            
                             Text(tabBarItems[index].title).font(.system(size: 13))
                             
                             if index + 1 == tabSelection{
                                 Capsule()
-                                    .frame(height: 4)
+                                    .frame(height: 10)
                                     .foregroundStyle(.greeny)
                                     .matchedGeometryEffect(id: "SelecedTabId", in: animationNamespace)
-                                    .offset(y:2)
+                                    .offset(y:5)
                             } else {
                                 Capsule()
                                     .frame(height: 4)
@@ -70,6 +68,7 @@ struct CustomTabView: View {
                             }
                         }
                         .foregroundColor(index + 1 == tabSelection ? .greeny : .gray)
+                        .padding(.bottom, 4)
                     }
                 }
                 .frame(height: 65)
