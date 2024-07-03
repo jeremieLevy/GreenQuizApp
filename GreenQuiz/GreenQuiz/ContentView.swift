@@ -10,8 +10,12 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var tabSelection = 1
+    @State var showLogin = true
     
     var body: some View {
+        
+
+            
             TabView(selection: $tabSelection){
                 
                 GardenView(gardenTitle: GardenViewModel())
@@ -29,8 +33,13 @@ struct ContentView: View {
             .overlay(alignment : .bottom) {
                 CustomTabView(tabSelection: $tabSelection)
             }
-        }
+        
+        .fullScreenCover(isPresented: $showLogin, content: {
+            LoginView(showLogin: $showLogin)
+        })
+        
     }
+}
 
 
 #Preview {
