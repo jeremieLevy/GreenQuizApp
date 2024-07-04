@@ -24,7 +24,7 @@ struct FunFactDetail: View {
                     .multilineTextAlignment(.center)
                     .padding()
                 Spacer()
-                ShareLink(item: String(title)) {
+                ShareLink(item: String(content)) {
                     VStack{
                         Image(systemName: "square.and.arrow.up")
                             .foregroundStyle(.black)

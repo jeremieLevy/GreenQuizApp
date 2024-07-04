@@ -1,16 +1,13 @@
-//
-//  GardenView.swift
-//  GreenQuiz
-//
-//  Created by Jérémie Levy on 28/06/2024.
-//
+  //
+  //  GardenView.swift
+  //  GreenQuiz
+  //
+  //  Created by Jérémie Levy on 28/06/2024.
+  //
 
 import SwiftUI
 
 struct GardenView: View {
-    
-    
-    
     
     @State var gardenTitle: GardenViewModel
     
@@ -71,12 +68,19 @@ struct GardenView: View {
                     }
                 })
             }
+          }
+          NavigationLink {
+              //                      QuestionView(theme: <#Theme#>)
+          } label: {
+            QuizOfTheDayButton()
+              .padding(.top, 40)
+          }
+          Spacer()
         }
-    }
-}
+      }
 
 #Preview {
-    GardenView(gardenTitle: GardenViewModel())
+  GardenView(gardenTitle: GardenViewModel())
 }
 
 

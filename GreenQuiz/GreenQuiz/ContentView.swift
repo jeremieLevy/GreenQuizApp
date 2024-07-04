@@ -14,22 +14,13 @@ struct ContentView: View {
     @AppStorage("isLogged") var isLogged: Bool = true
     
     var body: some View {
-        
-
-            
             TabView(selection: $tabSelection){
-                
                 GardenView(gardenTitle: GardenViewModel())
                     .tag(1)
-                
-                
                 QuizPageView()
                     .tag(2)
-                
-                
                 RecueilTheme()
                     .tag(3)
-                
             }
             .overlay(alignment : .bottom) {
                 CustomTabView(tabSelection: $tabSelection)
@@ -42,7 +33,6 @@ struct ContentView: View {
         
     }
 }
-
 
 #Preview {
     ContentView()

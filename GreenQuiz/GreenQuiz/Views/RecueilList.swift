@@ -29,62 +29,61 @@ struct RecueilList: View {
   func fetchData() {
     Task{
       await questions_vm.fetchQuestions()
-      sortData()
+        //      sortData()
     }
   }
   
   var body: some View {
-      ScrollView{
-        VStack{
-            Spacer(minLength: 30)
-//          SearchBarPerso(searchText: $searchText)
-          if sortData().count == 0 {
-            Text("Question introuvable !")
-          } else {
-            ForEach(sortData()) { question in
-                //            if  searchText.isEmpty ||
-                //                  funfact.description.localizedStandardContains(searchText) || funfact.theme.localizedStandardContains(searchText){
-              NavigationLink {
-                FunFactDetail(content: question.fields.annecdote, title: question.fields.title)
-              } label: {
-                ZStack{
-                  Rectangle()
-                    .foregroundStyle(.white)
-                    .overlay() {
-                      RoundedRectangle(cornerRadius: 10)
-                        .stroke(.black, lineWidth: 1)
-                    }.frame(height: 50)
-                  HStack {
-                    Text(question.fields.title)
-                      .foregroundStyle(.black)
-                      .font(.headline)
-                    Spacer()
-                    Text("Detail  >")
-                      .foregroundStyle(.gray)
-                  }.padding()
+    NavigationStack{
+      VStack{
+          Spacer(minLength: 30)
+//        SearchBarPerso(searchText: $searchText)
+        if sortData().count == 0 {
+          Text("Question introuvable !")
+        } else {
+          ScrollView{
+            VStack(spacing: 10){
+              ForEach(sortData()) { question in
+                  //            if  searchText.isEmpty ||
+                  //                  funfact.description.localizedStandardContains(searchText) || funfact.theme.localizedStandardContains(searchText){
+                NavigationLink {
+                  FunFactDetail(content: question.fields.annecdote, title: question.fields.title)
+                } label: {
+                  ZStack{
+                    Rectangle()
+                      .foregroundStyle(.white)
+                      .overlay() {
+                        RoundedRectangle(cornerRadius: 10)
+                          .stroke(.black, lineWidth: 1)
+                      }.frame(height: 50)
+                    HStack{
+                      Text(question.fields.title)
+                        .foregroundStyle(.black)
+                        .font(.system(size: 16)).bold()
+                        .frame(width: 250 ,alignment: .leading)
+                      Spacer()
+                      Text("Detail  >")
+                        .foregroundStyle(.gray)
+                    }
+                    .padding()
+                    .frame(height: 50)
+                  }
                 }
+                .padding(.horizontal)
               }
-              .padding(.horizontal)
             }
           }
-          Spacer()
         }
-        .onAppear(){
-          fetchData()
-        }
-        .navigationTitle(theme.fields.theme)
-        .toolbarBackground(.greeny, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbar(content: {
-          ToolbarItem(placement: .topBarTrailing) {
-            ProfilButton()
-            
-          }
-        })
+        Spacer()
       }
+    .navigationTitle(theme.fields.theme)
+      .toolbarBackground(.greeny, for: .navigationBar)
+      .toolbarBackground(.visible, for: .navigationBar)
+      .toolbar(content: { ToolbarItem(placement: .topBarTrailing) { ProfilButton() }
+      })
+    }
+    .onAppear(){
+      fetchData()
+    }
   }
 }
-
-//#Preview {
-// RecueilList(theme: ))
-//}

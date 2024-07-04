@@ -16,6 +16,7 @@ struct ProfilView: View {
         NavigationView {
                 ZStack {
                     Rectangle()
+
                         .fill(Color.greeny)
                     //Oui je sais que c'est un vert dégueulasse mais on a toujours pas mis de code couleur :(
                         .edgesIgnoringSafeArea(.all)

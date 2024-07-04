@@ -10,8 +10,6 @@ import SwiftUI
 
 struct GardenCustomView: View {
     
-    @State private var gardenPlateform: [AssetModel] = []
-    
     @State private var showingAssets = false
     @Binding var gardenNameField: GardenViewModel
     
@@ -21,19 +19,19 @@ struct GardenCustomView: View {
                 Rectangle()
                     .ignoresSafeArea()
                     .foregroundStyle(.greeny)
-                VStack(alignment: .trailing) {
-                    TextField("", text: $gardenNameField.gardenName, prompt: Text("Nommez votre jardin (max 15)").fontWeight(.medium).font(.system(size: 20)).foregroundStyle(.white.opacity(0.5)))
+                VStack() {
+                    TextField("", text: $gardenNameField.gardenName, prompt: Text("Nommez votre jardin (max 15)").font(.title3).fontWeight(.medium))
                         .multilineTextAlignment(.center)
                         .font(.system(size: 50))
                         .fontWeight(.bold)
-                        .foregroundStyle(Color.white)
-                        .padding(.bottom, -50)
-                    Image("GardenView")
+                        .foregroundStyle(.white)
+
+                    Image("GardenView-Resized-removebg")
                         .resizable()
-                        .frame(width: 700, height: 700)
+                        .frame(width: 500, height: 400)
                         .shadow(radius: 10, y: 50)
-                        .padding(.top, -50)
-                        
+                        .padding(.bottom, 100)
+ 
                     Button {
                         showingAssets.toggle()
                     } label: {
@@ -42,10 +40,9 @@ struct GardenCustomView: View {
                     .sheet(isPresented: $showingAssets, content: {AssetView()})
                     .foregroundStyle(.white)
                     .font(.largeTitle)
-                    .padding(.horizontal, 200)
-                    .padding(.top, -100)
-
-                }
+                    .padding(.leading, 250)
+                    .padding(.top, -70)
+                }.padding(.top, 20)
             }
         }
     }
