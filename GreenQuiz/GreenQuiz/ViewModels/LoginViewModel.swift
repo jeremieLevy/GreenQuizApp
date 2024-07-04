@@ -19,7 +19,7 @@ class UserViewModel {
     private let apiToken = "pat9xY5WUxKyReVg4.7bf897fef95bfc89b8a44554e3e14bc59611a5ae33690fe19ed4a5533ea57391"
     
 
-    func checkhUser(email: String, password: String) async{
+    func checkUser(email: String, password: String) async{
          
         let query = "filterByFormula=FIND('\(email)', {email})".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         

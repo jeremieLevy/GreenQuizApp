@@ -60,6 +60,9 @@ struct GardenView: View {
                             ParametreView()
                         } label: {
                             Image(systemName: "gearshape.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 26)
                                 .foregroundStyle(.white)
                         }
                     }

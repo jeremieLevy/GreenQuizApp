@@ -13,7 +13,6 @@ struct FunFactDetail: View {
   var title: String
   
     var body: some View {
-        NavigationStack{
             VStack{
                 Spacer()
                 Text("Infos")
@@ -46,7 +45,6 @@ struct FunFactDetail: View {
                     
                 }
             })
-        }
     }
 }
 

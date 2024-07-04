@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var tabSelection = 1
-    @State var showLogin = true
+    
+    @AppStorage("isLogged") var isLogged: Bool = true
     
     var body: some View {
         
@@ -34,8 +35,9 @@ struct ContentView: View {
                 CustomTabView(tabSelection: $tabSelection)
             }
         
-        .fullScreenCover(isPresented: $showLogin, content: {
-            LoginView(showLogin: $showLogin)
+        .fullScreenCover(isPresented: $isLogged, content: {
+            LoginView(isLogged: $isLogged)
+            
         })
         
     }

@@ -22,7 +22,7 @@ struct QuizPageView: View {
       ScrollView {
         VStack {
           QuizOfTheDayView()
-          Spacer()
+          Spacer(minLength: -30)
           Text("Quiz divers")
             .font(.largeTitle)
           ForEach(themes_vm.themes) { theme in
