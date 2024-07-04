@@ -44,7 +44,7 @@ struct GardenView: View {
                         }
                     }.padding(.bottom, -10)
                     NavigationLink {
-//                      QuestionView(theme: <#Theme#>)
+                        QuizPageView()
                     } label: {
                         QuizOfTheDayButton()
                             .padding(.top, 40)
@@ -66,13 +66,6 @@ struct GardenView: View {
                 })
             }
           }
-          NavigationLink {
-              //                      QuestionView(theme: <#Theme#>)
-          } label: {
-            QuizOfTheDayButton()
-              .padding(.top, 40)
-          }
-          Spacer()
         }
       }
 
