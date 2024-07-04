@@ -29,7 +29,6 @@ struct GardenCustomView: View {
                         .frame(width: 600, height: 600)
                         .shadow(radius: 10, y: 50)
                         .padding(.bottom, -50)
-                        
                     Button {
                         showingAssets.toggle()
                     } label: {

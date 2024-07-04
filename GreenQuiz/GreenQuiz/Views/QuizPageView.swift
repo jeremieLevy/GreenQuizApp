@@ -20,13 +20,12 @@ struct QuizPageView: View {
   var body: some View {
     NavigationStack{
       ScrollView {
-        VStack {
+        VStack(spacing: 40){
           QuizOfTheDayView()
-          Spacer()
           Text("Quiz divers")
             .font(.largeTitle)
-          ForEach(themes_vm.themes) { theme in
-            VStack{
+          VStack{
+            ForEach(themes_vm.themes) { theme in
               NavigationLink {
                 QuestionView(theme: theme)
               } label: {
@@ -40,6 +39,7 @@ struct QuizPageView: View {
       .onAppear(){
         fetchThemes()
       }
+      .navigationBarHidden(true)
     }
   }
 }

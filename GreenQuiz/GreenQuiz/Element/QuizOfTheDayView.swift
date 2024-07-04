@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QuizOfTheDayView: View {
     var body: some View {
-        ZStack {
+        ZStack{
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: 320, height: 150)
                 .foregroundStyle(.primaryApp)
@@ -20,21 +20,22 @@ struct QuizOfTheDayView: View {
             HStack {
                 Rectangle()
                     .scaledToFit()
-                    .frame(width: 230)
+                    .frame(width: 200)
                     .rotationEffect(.degrees(-130))
                     .foregroundStyle(.redApp)
-                    .padding(.top, 100)
+                    .padding(.top, 50)
                     .shadow(radius: 3)
-                Spacer(minLength: 320)
+                Spacer(minLength: 275)
                 Rectangle()
                     .scaledToFit()
-                    .frame(width: 230)
+                    .frame(width: 200)
                     .rotationEffect(.degrees(-45))
                     .foregroundStyle(.yellowApp)
-                    .padding(.bottom, 100)
+                    .padding(.bottom, 50)
                     .shadow(radius: 3)
             }
         }
+        .frame(height: 225)
     }
 }
 

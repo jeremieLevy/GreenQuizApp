@@ -78,14 +78,6 @@ struct CustomTabView: View {
             .padding(.horizontal)
         }
     }
-    
-    struct CustomTabView_Previews : PreviewProvider {
-        static var previews: some View{
-            CustomTabView(tabSelection: .constant(1))
-                .previewLayout(.sizeThatFits)
-                .padding(.vertical)
-        }
-    }
 }
 
 #Preview {

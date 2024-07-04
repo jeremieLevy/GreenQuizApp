@@ -68,9 +68,6 @@ struct ParametreView: View {
     }
 }
 
-
-struct parametre_Previews: PreviewProvider {
-    static var previews: some View {
-        ParametreView()
-    }
+#Preview {
+  ParametreView()
 }
