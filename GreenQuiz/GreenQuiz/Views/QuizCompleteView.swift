@@ -24,7 +24,8 @@ struct QuizCompleteView: View {
         }
         Spacer()
         VStack(spacing: 20){
-          Text("Quiz compléter,\nmerci d'avoir jouer !")
+          Text("Quiz complété,\nmerci d'avoir joué !")
+                .multilineTextAlignment(.center)
             .font(.largeTitle)
             .foregroundStyle(Color(backgroundColor))
             .bold()

@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
             TabView(selection: $tabSelection){
-                GardenView(gardenTitle: GardenViewModel())
+                GardenView(gardenTitle: GardenViewModel(), tabSelection: $tabSelection)
                     .tag(1)
                 QuizPageView()
                     .tag(2)
@@ -30,7 +30,6 @@ struct ContentView: View {
             LoginView(isLogged: $isLogged)
             
         })
-        
     }
 }
 

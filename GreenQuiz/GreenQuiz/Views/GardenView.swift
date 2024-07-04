@@ -11,13 +11,15 @@ struct GardenView: View {
     
     @State var gardenTitle: GardenViewModel
     
+    @Binding var tabSelection: Int
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 Rectangle()
                     .ignoresSafeArea()
                     .foregroundStyle(.greeny)
-                VStack {
+                VStack (spacing: 30) {
                     Text(gardenTitle.gardenName)
                         .font(.system(size: 50))
                         .fontWeight(.bold)
@@ -27,7 +29,7 @@ struct GardenView: View {
                     NavigationLink {
                         GardenCustomView(gardenNameField: $gardenTitle)
                     } label: {
-                        Image("GardenView_Small")
+                        Image("GardenView-Customized")
                             .resizable()
                             .scaledToFit()
                             .shadow(radius: 10, y: 30)
@@ -43,12 +45,10 @@ struct GardenView: View {
                                 .font(.headline)
                         }
                     }.padding(.bottom, -10)
-                    NavigationLink {
-                        QuizPageView()
-                    } label: {
-                        QuizOfTheDayButton()
-                            .padding(.top, 40)
-                    }
+                    QuizOfTheDayButton()
+                        .onTapGesture {
+                            tabSelection = 2
+                        }
                     Spacer()
                 }
                 .toolbar(content: {
@@ -72,9 +72,9 @@ struct GardenView: View {
         }
       }
 
-#Preview {
-  GardenView(gardenTitle: GardenViewModel())
-}
+//#Preview {
+//  GardenView(gardenTitle: GardenViewModel())
+//}
 
 
 

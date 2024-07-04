@@ -26,7 +26,7 @@ struct GardenCustomView: View {
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
 
-                    Image("GardenView-Resized-removebg")
+                    Image("GardenView-Customized")
                         .resizable()
                         .frame(width: 500, height: 400)
                         .shadow(radius: 10, y: 50)

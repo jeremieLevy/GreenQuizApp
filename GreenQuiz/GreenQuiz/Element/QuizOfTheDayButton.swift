@@ -16,7 +16,7 @@ struct QuizOfTheDayButton: View {
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundStyle(.white)
                 HStack {
-                    Text("Lancer le Quiz du jour")
+                    Text("Lancer un Quiz")
                         .foregroundStyle(.primaryApp)
                         .font(.title2)
                         .padding(.leading)

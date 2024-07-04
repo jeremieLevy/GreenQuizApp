@@ -13,7 +13,7 @@ struct QuizOfTheDayView: View {
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: 320, height: 150)
                 .foregroundStyle(.primaryApp)
-            Text("Quiz du Jour")
+            Text("Quiz")
                 .font(.largeTitle)
                 .foregroundStyle(.white)
                 .fontWeight(.bold)
