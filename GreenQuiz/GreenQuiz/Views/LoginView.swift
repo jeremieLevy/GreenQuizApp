@@ -13,7 +13,7 @@ struct LoginView: View {
     
     @State private var email = ""
     @State private var password = ""
-    @Binding var showLogin: Bool
+    @Binding var isLogged : Bool
     
     
     func fetchUsers() {
@@ -24,7 +24,7 @@ struct LoginView: View {
     
     func checkUser(email: String, password: String) {
         Task{
-            await viewModel.checkhUser(email: email, password: password)
+            await viewModel.checkUser(email: email, password: password)
         }
     }
     var body: some View {
@@ -82,10 +82,10 @@ struct LoginView: View {
                         Button(action: {
                            checkUser(email: email, password: password)
                             DispatchQueue.global().async{
-                                Thread.sleep(forTimeInterval: 0.8)
+                                Thread.sleep(forTimeInterval: 1.0)
                                 if !viewModel.isLoging{
-                                    showLogin = false
                                     print("connexion ok")
+                                    isLogged = false
                                 }else{
                                     print("pas co")
                                 }
@@ -132,5 +132,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(showLogin: .constant(true))
+    LoginView(isLogged: .constant(true))
 }

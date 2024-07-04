@@ -36,7 +36,8 @@ struct RecueilList: View {
   var body: some View {
     NavigationStack{
       VStack{
-        SearchBarPerso(searchText: $searchText)
+          Spacer(minLength: 30)
+//        SearchBarPerso(searchText: $searchText)
         if sortData().count == 0 {
           Text("Question introuvable !")
         } else {
@@ -69,13 +70,13 @@ struct RecueilList: View {
                   }
                 }
                 .padding(.horizontal)
-                .navigationTitle("")
               }
             }
           }
         }
         Spacer()
       }
+    .navigationTitle(theme.fields.theme)
       .toolbarBackground(.greeny, for: .navigationBar)
       .toolbarBackground(.visible, for: .navigationBar)
       .toolbar(content: { ToolbarItem(placement: .topBarTrailing) { ProfilButton() }

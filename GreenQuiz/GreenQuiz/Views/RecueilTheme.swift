@@ -26,7 +26,8 @@ struct RecueilTheme: View {
     NavigationStack{
       ScrollView {
         VStack{
-          SearchBarPerso(searchText: $searchText)
+            Spacer(minLength: 30)
+//                    SearchBarPerso(searchText: $searchText)
           LazyVGrid(columns: adaptativeColumns, spacing: 16, content: {
             ForEach(themes_vm.themes) { theme in
                 //                            if  searchText.isEmpty ||
@@ -67,6 +68,7 @@ struct RecueilTheme: View {
             }
           })
         }
+        .navigationTitle("Recueil")
         .toolbarBackground(.greeny, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbar(content: {

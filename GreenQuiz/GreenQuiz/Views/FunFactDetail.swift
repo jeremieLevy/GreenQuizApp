@@ -13,7 +13,6 @@ struct FunFactDetail: View {
   var title: String
   
     var body: some View {
-        NavigationStack{
             VStack{
                 Spacer()
                 Text("Infos")
@@ -25,7 +24,7 @@ struct FunFactDetail: View {
                     .multilineTextAlignment(.center)
                     .padding()
                 Spacer()
-                ShareLink(item: String(title)) {
+                ShareLink(item: String(content)) {
                     VStack{
                         Image(systemName: "square.and.arrow.up")
                             .foregroundStyle(.black)
@@ -46,7 +45,6 @@ struct FunFactDetail: View {
                     
                 }
             })
-        }
     }
 }
 
