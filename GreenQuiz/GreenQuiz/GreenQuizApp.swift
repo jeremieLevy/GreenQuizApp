@@ -12,6 +12,7 @@ struct GreenQuizApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                
         }
     }
 }

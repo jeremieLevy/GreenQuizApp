@@ -8,42 +8,62 @@
 import SwiftUI
 
 struct GardenView: View {
-  
-  
-  @State var gardenTitle: GardenViewModel
-  
-  var body: some View {
-    NavigationStack {
-      ZStack{
-        Rectangle()
-          .ignoresSafeArea()
-          .foregroundStyle(.primaryApp)
-        VStack{
-          HStack{
-            Spacer()
-            ProfilButton()
-          }.padding(.horizontal)
-          Text(gardenTitle.gardenName)
-            .font(.system(size: 50))
-            .fontWeight(.bold)
-            .foregroundStyle(.white)
-            .padding(.top, 20)
-          NavigationLink {
-            GardenCustomView(gardenNameField: $gardenTitle)
-          } label: {
-            Image("GardenView_Small")
-              .resizable()
-              .scaledToFit()
-              .shadow(radius: 10, y: 30)
-          }
-          ShareLink(item: String("Share".description)) {
-            VStack {
-              Image(systemName: "square.and.arrow.up")
-                .foregroundStyle(.white)
-                .font(.largeTitle)
-              Text("Partager")
-                .foregroundStyle(.white)
-                .font(.headline)
+    
+    @State var gardenTitle: GardenViewModel
+    
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Rectangle()
+                    .ignoresSafeArea()
+                    .foregroundStyle(.greeny)
+                VStack {
+                    Text(gardenTitle.gardenName)
+                        .font(.system(size: 50))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .padding(.top, 20)
+                        .padding(.bottom, -20)
+                    NavigationLink {
+                        GardenCustomView(gardenNameField: $gardenTitle)
+                    } label: {
+                        Image("GardenView_Small")
+                            .resizable()
+                            .scaledToFit()
+                            .shadow(radius: 10, y: 30)
+                            .padding(.bottom, -20)
+                    }
+                    ShareLink(item: String("Share".description)) {
+                        VStack {
+                            Image(systemName: "square.and.arrow.up")
+                                .foregroundStyle(.white)
+                                .font(.largeTitle)
+                            Text("Partager")
+                                .foregroundStyle(.white)
+                                .font(.headline)
+                        }
+                    }.padding(.bottom, -10)
+                    NavigationLink {
+//                      QuestionView(theme: <#Theme#>)
+                    } label: {
+                        QuizOfTheDayButton()
+                            .padding(.top, 40)
+                    }
+                    Spacer()
+                }
+                .toolbar(content: {
+                    ToolbarItem(placement: .topBarLeading) {
+                        NavigationLink {
+                            ParametreView()
+                        } label: {
+                            Image(systemName: "gearshape.fill")
+                                .foregroundStyle(.white)
+                        }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        ProfilButton()
+                    }
+                })
             }
           }
           NavigationLink {
@@ -55,9 +75,6 @@ struct GardenView: View {
           Spacer()
         }
       }
-    }
-  }
-}
 
 #Preview {
   GardenView(gardenTitle: GardenViewModel())
